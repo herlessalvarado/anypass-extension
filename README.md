@@ -1,1 +1,3 @@
-# anypass-extension
+# AnyPass
+
+Password manager extension for Chrome

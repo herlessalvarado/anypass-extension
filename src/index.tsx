@@ -4,19 +4,19 @@ import "./index.css";
 import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import AuthProvider from "./state/AuthProvider";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <MemoryRouter>
       <ChakraProvider>
         <AuthProvider>
           <App />
         </AuthProvider>
       </ChakraProvider>
-    </BrowserRouter>
+    </MemoryRouter>
   </React.StrictMode>
 );

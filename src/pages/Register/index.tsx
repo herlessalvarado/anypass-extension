@@ -16,7 +16,7 @@ import {
   Spinner,
   useToast,
 } from "@chakra-ui/react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { CirclePicker } from "react-color";
 import { FaUserAlt, FaLock } from "react-icons/fa";
@@ -24,9 +24,8 @@ import { FaUserAlt, FaLock } from "react-icons/fa";
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 
-const Login = () => {
-  const navigate = useNavigate();
-  const { login } = useAuth();
+const Register = () => {
+  const { register } = useAuth();
   const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,20 +39,26 @@ const Login = () => {
     setColorCode(color.hex);
   };
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     setIsLoading(true);
-    const success = await login(email, password, colorCode);
-    setIsLoading(false);
-    if (success) navigate("/");
+    const success = await register(email, password, colorCode);
+    if (success)
+      toast({
+        title: "Account created.",
+        description: "We've created your account for you.",
+        status: "success",
+        duration: 10000,
+        isClosable: true,
+      });
     else
       toast({
-        title: "Wrong crendetials.",
-        description:
-          "Please check that the email, password or color are correct or try again later.",
+        title: "Unable to create account.",
+        description: "Please check if the email is valid or try again later.",
         status: "error",
         duration: 10000,
         isClosable: true,
       });
+    setIsLoading(false);
   };
 
   return (
@@ -72,7 +77,7 @@ const Login = () => {
         alignItems="center"
       >
         <Avatar bg="teal.500" />
-        <Heading color="teal.400">Login</Heading>
+        <Heading color="teal.400">Register</Heading>
         {isLoading ? (
           <Spinner color="teal" />
         ) : (
@@ -124,12 +129,12 @@ const Login = () => {
                   variant="solid"
                   colorScheme="teal"
                   width="full"
-                  onClick={handleLogin}
+                  onClick={handleRegister}
                   isDisabled={
                     email === "" || password === "" || colorCode === ""
                   }
                 >
-                  Login
+                  Register
                 </Button>
               </Stack>
             </form>
@@ -137,13 +142,13 @@ const Login = () => {
         )}
       </Stack>
       <Box>
-        New to us?{" "}
-        <Link as={NavLink} to="/register" color="teal.500">
-          Sign Up
+        Already have an account?{" "}
+        <Link as={NavLink} to="/login" color="teal.500">
+          Log In
         </Link>
       </Box>
     </Flex>
   );
 };
 
-export default Login;
+export default Register;

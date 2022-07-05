@@ -148,19 +148,29 @@ const Dashboard = () => {
         </Flex>
       </Flex>
 
-      <Modal isOpen={isOpenDecrypt} onClose={onCloseDecrypt} isCentered>
+      <Modal
+        isOpen={isOpenDecrypt}
+        onClose={onCloseDecrypt}
+        isCentered
+        size="xs"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{decryptedData.application}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody mb="10px">
+          <ModalBody mb="10px" fontSize="16px">
             {`Username: ${decryptedData.username}`} <br />
             {`Password: ${decryptedData.password}`}
           </ModalBody>
         </ModalContent>
       </Modal>
 
-      <Modal isOpen={isOpenEncrypt} onClose={onCloseEncrypt} isCentered>
+      <Modal
+        isOpen={isOpenEncrypt}
+        onClose={onCloseEncrypt}
+        isCentered
+        size="xs"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Encrypt</ModalHeader>

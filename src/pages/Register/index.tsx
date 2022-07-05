@@ -17,7 +17,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import useStore from "../../hooks/useStore";
 import { CirclePicker } from "react-color";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
@@ -25,7 +25,7 @@ const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 
 const Register = () => {
-  const { register } = useAuth();
+  const { register } = useStore();
   const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

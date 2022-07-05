@@ -1,11 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import useAuth from "./hooks/useAuth";
+import useStore from "./hooks/useStore";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = useStore();
 
   const HandleRedirect = () => {
     if (isAuthenticated) return <Dashboard />;

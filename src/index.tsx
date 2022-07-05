@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
-import AuthProvider from "./state/AuthProvider";
+import Provider from "./state/Provider";
 import { MemoryRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
@@ -13,9 +13,9 @@ root.render(
   <React.StrictMode>
     <MemoryRouter>
       <ChakraProvider>
-        <AuthProvider>
+        <Provider>
           <App />
-        </AuthProvider>
+        </Provider>
       </ChakraProvider>
     </MemoryRouter>
   </React.StrictMode>
